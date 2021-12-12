@@ -10,12 +10,83 @@ class ActionProvider {
     this.updateChatbotState(greetingMessage);
   }
 
-  handleJavascriptList = () => {
+  handleCountryOptions = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Which city you belong to:",
+      {
+        widget: "cityOptions",
+      }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleCityOptions = () => {
     const message = this.createChatBotMessage(
       "Thanks for the input. Which industry you belong to:",
       {
-        widget: "javascriptLinks",
+        widget: "industryOptions",
       }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleIndustryOptions = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Are you a male or female?",
+      {
+        widget: "genderOptions",
+      }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleGenderOptions = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Which of the following risk scenarious you faced:",
+      {
+        widget: "criticalRiskOptions",
+      }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleCriticalRiskOptions = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Which of the following risk scenarious you faced:",
+      {
+        widget: "criticalRiskOptions",
+      }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleDate = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. When did the incident occur:",
+      {
+        widget: "dateSelector",
+      }
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  handleDescription = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Could you please provide a description of the event:",
+    );
+
+    this.updateChatbotState(message);
+  };
+
+  showRiskLevel = () => {
+    const message = this.createChatBotMessage(
+      "Thanks for the input. Your risk level is: 1",
     );
 
     this.updateChatbotState(message);
