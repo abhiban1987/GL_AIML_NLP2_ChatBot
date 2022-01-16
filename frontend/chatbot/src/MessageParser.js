@@ -11,9 +11,11 @@ class MessageParser {
       this.actionProvider.greet();
     }
 
-    if (lowerCaseMessage.includes("javascript")) {
-      this.actionProvider.handleJavascriptList();
+    if (lowerCaseMessage.includes("industry")) {
+      this.actionProvider.handleCountryOptions();
     }
+
+    this.actionProvider.showRiskLevel(message);
   }
 }
 
