@@ -1,3 +1,5 @@
+import axios from "axios";
+
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc) {
     this.createChatBotMessage = createChatBotMessage;
@@ -67,7 +69,7 @@ class ActionProvider {
 
   handleDate = () => {
     const message = this.createChatBotMessage(
-      "Thanks for the input. When did the incident occur:",
+      "Thanks for the input. When did the incident occur: (Please click on the date selector to select a date)",
       {
         widget: "dateSelector",
       }
@@ -84,12 +86,27 @@ class ActionProvider {
     this.updateChatbotState(message);
   };
 
-  showRiskLevel = () => {
+  showRiskLevel = (description) => {
     const message = this.createChatBotMessage(
-      "Thanks for the input. Your risk level is: 1",
+      "Kindly wait till I fetch the data from the server..."
     );
 
     this.updateChatbotState(message);
+    axios.post('https://chatbot-draft.herokuapp.com/predict', {
+      "accident_description": description
+    }).then((response) => {
+      const message = this.createChatBotMessage(
+        "The potential accident level is: " + response.data.potential_accident_level,
+      );
+
+      this.updateChatbotState(message);
+    }).catch((error) => {
+      const message = this.createChatBotMessage(
+        "Some error occured. Please try again later. Sorry for the inconvenience cause.",
+      );
+
+      this.updateChatbotState(message);
+    });
   };
 
   updateChatbotState(message) {

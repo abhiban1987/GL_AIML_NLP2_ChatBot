@@ -15,7 +15,7 @@ class MessageParser {
       this.actionProvider.handleCountryOptions();
     }
 
-    this.actionProvider.showRiskLevel();
+    this.actionProvider.showRiskLevel(message);
   }
 }
 
